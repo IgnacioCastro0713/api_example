@@ -21,7 +21,7 @@ class PokemonController extends Controller
 
     public function show($id)
     {
-        $pokemon = Pokemon::find(id);
+        $pokemon = Pokemon::find($id);
         return response()->json($pokemon);
     }
 
