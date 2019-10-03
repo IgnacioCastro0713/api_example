@@ -10,7 +10,8 @@ class PokemonController extends Controller
 {
     public function index()
     {
-        return response()->json(Pokemon::all());
+        $pokemons = Pokemon::all();
+        return response()->json($pokemons);
     }
 
     public function store(Request $request)
@@ -26,7 +27,8 @@ class PokemonController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $pokemon = Pokemon::find($id);
+        $pokemon->update($request->all());
     }
 
     public function destroy($id)
