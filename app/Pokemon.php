@@ -8,5 +8,7 @@ class Pokemon extends Model
 {
     protected $table = 'pokemon';
 
+    protected $primaryKey = 'id';
+
     protected $guarded = [];
 }
