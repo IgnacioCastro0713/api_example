@@ -20,5 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::apiResources([
-    'pokemon' => 'API\PokemonController'
+    'pokemon' => 'API\PokemonController',
+    'trainer' => 'API\TrainerController',
 ]);
