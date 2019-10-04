@@ -28,5 +28,6 @@ class RepositoryServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind(TrainerRepositoryInterface::class, TrainerRepository::class);
+        // add more...
     }
 }
