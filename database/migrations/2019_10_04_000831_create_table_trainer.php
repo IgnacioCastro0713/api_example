@@ -13,7 +13,7 @@ class CreateTableTrainer extends Migration
      */
     public function up()
     {
-        Schema::table('trainer', function (Blueprint $table) {
+        Schema::create('trainer', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('age');
