@@ -11,6 +11,6 @@ class PokemonTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Pokemon::class, 100)->create();
+        factory(\App\Pokemon::class, 50)->create();
     }
 }

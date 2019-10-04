@@ -11,6 +11,6 @@ class TrainerTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Trainer::class, 100)->create();
+        factory(\App\Trainer::class, 50)->create();
     }
 }
