@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Trainer\StoreRequest;
+use App\Http\Requests\Trainer\UpdateRequest;
 use App\Repositories\Trainer\TrainerRepositoryInterface;
-use Illuminate\Http\Request;
 
 class TrainerController extends Controller
 {
@@ -20,7 +21,7 @@ class TrainerController extends Controller
         return $this->trainer->all();
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $this->trainer->save($request->all());
     }
@@ -30,7 +31,7 @@ class TrainerController extends Controller
         return $this->trainer->getById($id);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $this->trainer->update($request->all(), $id);
     }

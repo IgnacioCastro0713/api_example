@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Pokemon\StoreRequest;
+use App\Http\Requests\Pokemon\UpdateRequest;
 use App\Pokemon;
-use Illuminate\Http\Request;
 
 class PokemonController extends Controller
 {
@@ -14,7 +15,7 @@ class PokemonController extends Controller
         return response()->json($pokemons);
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         Pokemon::create($request->all());
     }
@@ -25,7 +26,7 @@ class PokemonController extends Controller
         return response()->json($pokemon);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $pokemon = Pokemon::find($id);
         $pokemon->update($request->all());
