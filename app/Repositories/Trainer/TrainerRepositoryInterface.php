@@ -8,7 +8,7 @@ interface TrainerRepositoryInterface
 {
     public function all();
 
-    public function getById($id);
+    public function find($id);
 
     public function save($data);
 

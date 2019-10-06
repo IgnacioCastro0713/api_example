@@ -28,7 +28,7 @@ class TrainerController extends Controller
 
     public function show($id)
     {
-        return $this->trainer->getById($id);
+        return $this->trainer->find($id);
     }
 
     public function update(UpdateRequest $request, $id)

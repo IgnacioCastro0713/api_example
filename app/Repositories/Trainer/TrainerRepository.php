@@ -8,29 +8,35 @@ use App\Trainer;
 
 class TrainerRepository implements TrainerRepositoryInterface
 {
+    private $model;
+
+    public function __construct(Trainer $trainer)
+    {
+        $this->model = $trainer;
+    }
 
     public function all()
     {
-        return Trainer::all();
+        return $this->model->all();
     }
 
-    public function getById($id)
+    public function find($id)
     {
-        return Trainer::find($id);
+        return $this->model->find($id);
     }
 
     public function save($data)
     {
-        Trainer::create($data);
+        $this->model->create($data);
     }
 
     public function update($data, $id)
     {
-        $this->getById($id)->update($data);
+        $this->find($id)->update($data);
     }
 
     public function delete($id)
     {
-        $this->getById($id)->delete();
+        $this->find($id)->delete();
     }
 }
