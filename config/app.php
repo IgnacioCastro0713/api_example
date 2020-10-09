@@ -176,6 +176,11 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
 
+        /*
+         * My providers
+         */
+        App\Providers\ViewMacroProvider::class,
+
     ],
 
     /*
