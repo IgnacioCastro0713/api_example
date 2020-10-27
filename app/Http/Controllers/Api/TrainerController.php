@@ -5,39 +5,39 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Trainer\StoreRequest;
 use App\Http\Requests\Trainer\UpdateRequest;
-use App\Repositories\Trainer\TrainerRepositoryInterface;
+use App\Repositories\Trainer\ITrainerRepository;
 
 class TrainerController extends Controller
 {
-    private $trainer;
+    private ITrainerRepository $trainerRepository;
 
-    public function __construct(TrainerRepositoryInterface $trainerRepository)
+    public function __construct(ITrainerRepository $trainerRepository)
     {
-        $this->trainer = $trainerRepository;
+        $this->trainerRepository = $trainerRepository;
     }
 
     public function index()
     {
-        return $this->trainer->all();
+        return $this->trainerRepository->all();
     }
 
     public function store(StoreRequest $request)
     {
-        $this->trainer->save($request->all());
+        $this->trainerRepository->save($request->all());
     }
 
     public function show($id)
     {
-        return $this->trainer->find($id);
+        return $this->trainerRepository->find($id);
     }
 
     public function update(UpdateRequest $request, $id)
     {
-        $this->trainer->update($request->all(), $id);
+        $this->trainerRepository->update($request->all(), $id);
     }
 
     public function destroy($id)
     {
-        $this->trainer->delete($id);
+        $this->trainerRepository->delete($id);
     }
 }

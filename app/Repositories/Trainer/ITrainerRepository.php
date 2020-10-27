@@ -4,15 +4,15 @@
 namespace App\Repositories\Trainer;
 
 
-interface TrainerRepositoryInterface
+interface ITrainerRepository
 {
     public function all();
 
     public function find($id);
 
-    public function save($data);
+    public function save(array $data);
 
-    public function update($data, $id);
+    public function update(array $data, $id);
 
     public function delete($id);
 }

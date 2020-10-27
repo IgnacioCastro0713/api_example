@@ -6,34 +6,40 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Pokemon\StoreRequest;
 use App\Http\Requests\Pokemon\UpdateRequest;
 use App\Pokemon;
+use App\Repositories\Pokemon\IPokemonRepository;
 
 class PokemonController extends Controller
 {
+    private IPokemonRepository $pokemonRepository;
+
+    public function __construct(IPokemonRepository $pokemonRepository)
+    {
+        $this->pokemonRepository = $pokemonRepository;
+    }
+
     public function index()
     {
-        $pokemons = Pokemon::all();
-        return response()->json($pokemons);
+        return $this->pokemonRepository->all();
     }
 
     public function store(StoreRequest $request)
     {
-        Pokemon::create($request->all());
+        return $this->pokemonRepository->save($request->all());
     }
 
     public function show($id)
     {
-        $pokemon = Pokemon::find($id);
-        return response()->json($pokemon);
+        $pokemon = $this->pokemonRepository->find($id);
+        return $pokemon ? response()->json($pokemon) : response()->json(['message' => "not found"], 404);
     }
 
     public function update(UpdateRequest $request, $id)
     {
-        $pokemon = Pokemon::find($id);
-        $pokemon->update($request->all());
+        return $this->pokemonRepository->update($request->all(), $id);
     }
 
     public function destroy($id)
     {
-        Pokemon::find($id)->delete();
+        return $this->pokemonRepository->delete($id);
     }
 }

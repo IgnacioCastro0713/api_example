@@ -6,9 +6,9 @@ namespace App\Repositories\Trainer;
 
 use App\Trainer;
 
-class TrainerRepository implements TrainerRepositoryInterface
+class TrainerRepository implements ITrainerRepository
 {
-    private $model;
+    private Trainer $model;
 
     public function __construct(Trainer $trainer)
     {
@@ -25,12 +25,12 @@ class TrainerRepository implements TrainerRepositoryInterface
         return $this->model->find($id);
     }
 
-    public function save($data)
+    public function save(array $data)
     {
         $this->model->create($data);
     }
 
-    public function update($data, $id)
+    public function update(array $data, $id)
     {
         $this->find($id)->update($data);
     }

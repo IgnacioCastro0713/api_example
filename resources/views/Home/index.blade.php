@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Hello world!</h1>
-@foreach($data as $p)
+@foreach($pokemon as $p)
     <p>{{$p->name}}</p>
 @endforeach
 </body>

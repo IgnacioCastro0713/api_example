@@ -4,8 +4,10 @@ namespace App\Providers;
 
 
 
+use App\Repositories\Pokemon\IPokemonRepository;
+use App\Repositories\Pokemon\PokemonRepository;
 use App\Repositories\Trainer\TrainerRepository;
-use App\Repositories\Trainer\TrainerRepositoryInterface;
+use App\Repositories\Trainer\ITrainerRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -27,7 +29,8 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind(TrainerRepositoryInterface::class, TrainerRepository::class);
+        $this->app->bind(ITrainerRepository::class, TrainerRepository::class);
+        $this->app->bind(IPokemonRepository::class, PokemonRepository::class);
         // add more...
     }
 }
